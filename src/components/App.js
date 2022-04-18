@@ -1,3 +1,4 @@
+import React from "react";
 import logo from "../images/logo/header-logo.svg";
 import avatarPic from "../images/jacq-cousteau-avatar-pic.png";
 
