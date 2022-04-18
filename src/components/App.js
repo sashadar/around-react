@@ -1,16 +1,14 @@
 import React from "react";
 import Header from "./Header.js";
 import Main from "./Main.js";
+import Footer from "./Footer.js";
 
 function App() {
   return (
     <div className="page">
       <Header />
       <Main />
-      <footer className="footer">
-        <p className="copyright">&copy; 2022 Around The U.S.</p>
-      </footer>
-
+      <Footer />
       <template id="template-element">
         <article className="element">
           <img className="element__image" src="#" alt="" />
