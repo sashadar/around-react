@@ -47,7 +47,7 @@ function Main() {
           onClick={handleAddPlaceClick}
         ></button>
       </section>
-      <section className="popup popup_content_edit-profile">
+      {/* <section className="popup popup_content_edit-profile">
         <div className="popup__container popup__container_content_edit-profile popup__container_content_form">
           <button
             type="button"
@@ -194,7 +194,7 @@ function Main() {
             </button>
           </form>
         </div>
-      </section>
+      </section> */}
       <section className="elements"></section>
     </main>
   );

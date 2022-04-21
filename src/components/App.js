@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./Header.js";
 import Main from "./Main.js";
+import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 import Footer from "./Footer.js";
 
 function App() {
@@ -8,6 +10,12 @@ function App() {
     <div className="page">
       <Header />
       <Main />
+
+      <PopupWithForm name={"edit-profile"} title={"Edit Profile"} />
+      <PopupWithForm name={"edit-avatar"} title={"Change profile picture"} />
+      <PopupWithForm name={"add-card"} title={"New place"} />
+      <PopupWithForm name={"confirmation"} title={"Are you sure?"} />
+      <ImagePopup />
       <Footer />
       <template id="template-element">
         <article className="element">
