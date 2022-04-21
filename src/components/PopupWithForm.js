@@ -13,7 +13,11 @@ function PopupWithForm(props) {
   //props.name: "confirmation"
   //props.title: "Are you sure?"
   return (
-    <section className={`popup popup_content_${props.name}`}>
+    <section
+      className={`popup popup_content_${props.name} ${
+        props.isOpen ? "popup_opened" : ""
+      }`}
+    >
       <div
         className={`popup__container popup__container_content_${props.name} popup__container_content_form`}
       >

@@ -6,15 +6,61 @@ import ImagePopup from "./ImagePopup";
 import Footer from "./Footer.js";
 
 function App() {
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
+    React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
+    React.useState(false);
+
+  function handleEditAvatarClick() {
+    /*     document
+      .querySelector(".popup_content_edit-avatar")
+      .classList.add("popup_opened"); */
+    setIsEditAvatarPopupOpen(true);
+  }
+
+  function handleEditProfileClick() {
+    /*     document
+      .querySelector(".popup_content_edit-profile")
+      .classList.add("popup_opened"); */
+    setIsEditProfilePopupOpen(true);
+  }
+
+  function handleAddPlaceClick() {
+    /*     document
+      .querySelector(".popup_content_add-card")
+      .classList.add("popup_opened"); */
+    setIsAddPlacePopupOpen(true);
+  }
+
+  function handleCardClick() {}
+
   return (
     <div className="page">
       <Header />
-      <Main />
+      <Main
+        onEditAvatarClick={handleEditAvatarClick}
+        onEditProfileClick={handleEditProfileClick}
+        onAddPlaceClick={handleAddPlaceClick}
+        onCardClick={handleCardClick}
+      />
 
-      <PopupWithForm name={"edit-profile"} title={"Edit Profile"} />
-      <PopupWithForm name={"edit-avatar"} title={"Change profile picture"} />
-      <PopupWithForm name={"add-card"} title={"New place"} />
-      <PopupWithForm name={"confirmation"} title={"Are you sure?"} />
+      <PopupWithForm
+        name={"edit-profile"}
+        title={"Edit Profile"}
+        isOpen={isEditProfilePopupOpen}
+      />
+      <PopupWithForm
+        name={"edit-avatar"}
+        title={"Change profile picture"}
+        isOpen={isEditAvatarPopupOpen}
+      />
+      <PopupWithForm
+        name={"add-card"}
+        title={"New place"}
+        isOpen={isAddPlacePopupOpen}
+      />
+      {/* <PopupWithForm name={"confirmation"} title={"Are you sure?"} /> */}
       <ImagePopup />
       <Footer />
       <template id="template-element">

@@ -1,31 +1,13 @@
 import React from "react";
 import avatarPic from "../images/jacq-cousteau-avatar-pic.png";
 
-function Main() {
-  function handleEditAvatarClick() {
-    document
-      .querySelector(".popup_content_edit-avatar")
-      .classList.add("popup_opened");
-  }
-
-  function handleEditProfileClick() {
-    document
-      .querySelector(".popup_content_edit-profile")
-      .classList.add("popup_opened");
-  }
-
-  function handleAddPlaceClick() {
-    document
-      .querySelector(".popup_content_add-card")
-      .classList.add("popup_opened");
-  }
-
+function Main(props) {
   return (
     <main className="main">
       <section className="profile">
         <div
           className="profile__avatar-overlay"
-          onClick={handleEditAvatarClick}
+          onClick={props.onEditAvatarClick}
         >
           <img className="avatar" src={avatarPic} alt="Avatar" />
         </div>
@@ -36,7 +18,7 @@ function Main() {
             className="profile-info__button-edit"
             type="button"
             aria-label="edit"
-            onClick={handleEditProfileClick}
+            onClick={props.onEditProfileClick}
           ></button>
           <p className="profile-info__job"></p>
         </div>
@@ -44,7 +26,7 @@ function Main() {
           className="profile__button-add"
           type="button"
           aria-label="add"
-          onClick={handleAddPlaceClick}
+          onClick={props.onAddPlaceClick}
         ></button>
       </section>
       {/* <section className="popup popup_content_edit-profile">
