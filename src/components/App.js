@@ -11,29 +11,27 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
 
   function handleEditAvatarClick() {
-    /*     document
-      .querySelector(".popup_content_edit-avatar")
-      .classList.add("popup_opened"); */
     setIsEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
-    /*     document
-      .querySelector(".popup_content_edit-profile")
-      .classList.add("popup_opened"); */
     setIsEditProfilePopupOpen(true);
   }
 
   function handleAddPlaceClick() {
-    /*     document
-      .querySelector(".popup_content_add-card")
-      .classList.add("popup_opened"); */
     setIsAddPlacePopupOpen(true);
   }
 
   function handleCardClick() {}
+
+  function closeAllPopups() {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
 
   return (
     <div className="page">
@@ -49,19 +47,22 @@ function App() {
         name={"edit-profile"}
         title={"Edit Profile"}
         isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupWithForm
         name={"edit-avatar"}
         title={"Change profile picture"}
         isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupWithForm
         name={"add-card"}
         title={"New place"}
         isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       />
       {/* <PopupWithForm name={"confirmation"} title={"Are you sure?"} /> */}
-      <ImagePopup />
+      <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} />
       <Footer />
       <template id="template-element">
         <article className="element">

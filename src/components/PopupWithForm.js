@@ -25,6 +25,7 @@ function PopupWithForm(props) {
           type="button"
           className="popup__button-close popup__button-close_content_form"
           aria-label="close"
+          onClick={props.onClose}
         ></button>
 
         <form className="form popup__form" name={props.name} noValidate>
