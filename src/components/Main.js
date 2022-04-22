@@ -18,7 +18,6 @@ function Main(props) {
         setUserAvatar(userData.avatar);
         setCards(initialCardsData);
       })
-
       .catch((err) => {
         console.log(`Error:     ${err}`);
       });
@@ -201,7 +200,11 @@ function Main(props) {
       </section> */}
       <section className="elements">
         {cards.map((cardData) => (
-          <Card key={cardData._id} card={cardData} />
+          <Card
+            key={cardData._id}
+            card={cardData}
+            onCardClick={props.onCardClick}
+          />
         ))}
       </section>
     </main>
