@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import api from "../utils/api";
+import Card from "./Card";
 import avatarPic from "../images/jacq-cousteau-avatar-pic.png";
 
 function Main(props) {
@@ -201,29 +202,7 @@ function Main(props) {
       </section> */}
       <section className="elements">
         {cards.map((cardData) => (
-          <article key={cardData._id} className="element">
-            <img
-              className="element__image"
-              src={cardData.link}
-              alt={cardData.name}
-            />
-            <button
-              className="element__button element__button_action_delete"
-              type="button"
-              aria-label="delete"
-            ></button>
-            <div className="element__wrap">
-              <h2 className="element__title">{cardData.name}</h2>
-              <div className="element_like-container">
-                <button
-                  className="element__button element__button_action_like"
-                  type="button"
-                  aria-label="like"
-                ></button>
-                <p className="element__like-counter">{cardData.likes.length}</p>
-              </div>
-            </div>
-          </article>
+          <Card key={cardData._id} card={cardData} />
         ))}
       </section>
     </main>
