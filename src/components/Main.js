@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import api from "../utils/api";
 import Card from "./Card";
-import avatarPic from "../images/jacq-cousteau-avatar-pic.png";
 
 function Main(props) {
   const [userName, setUserName] = React.useState("");
