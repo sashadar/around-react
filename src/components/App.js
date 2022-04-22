@@ -65,7 +65,7 @@ function App() {
       <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} />
       <Footer />
       <template id="template-element">
-        <article className="element">
+        {/*         <article className="element">
           <img className="element__image" src="#" alt="" />
           <button
             className="element__button element__button_action_delete"
@@ -83,7 +83,7 @@ function App() {
               <p className="element__like-counter">0</p>
             </div>
           </div>
-        </article>
+        </article> */}
       </template>
     </div>
   );

@@ -7,12 +7,21 @@ function Main(props) {
   const [userDescription, setUserDescription] = React.useState("");
   const [userAvatar, setUserAvatar] = React.useState("");
 
+  const [cards, setCards] = React.useState([]);
+
   useEffect(() => {
-    api.getUserData().then((userData) => {
-      setUserName(userData.name);
-      setUserDescription(userData.about);
-      setUserAvatar(userData.avatar);
-    });
+    api
+      .getInitialData()
+      .then(([userData, initialCardsData]) => {
+        setUserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar);
+        setCards(initialCardsData);
+      })
+
+      .catch((err) => {
+        console.log(`Error:     ${err}`);
+      });
   }, []);
 
   return (
@@ -190,7 +199,33 @@ function Main(props) {
           </form>
         </div>
       </section> */}
-      <section className="elements"></section>
+      <section className="elements">
+        {cards.map((cardData) => (
+          <article key={cardData._id} className="element">
+            <img
+              className="element__image"
+              src={cardData.link}
+              alt={cardData.name}
+            />
+            <button
+              className="element__button element__button_action_delete"
+              type="button"
+              aria-label="delete"
+            ></button>
+            <div className="element__wrap">
+              <h2 className="element__title">{cardData.name}</h2>
+              <div className="element_like-container">
+                <button
+                  className="element__button element__button_action_like"
+                  type="button"
+                  aria-label="like"
+                ></button>
+                <p className="element__like-counter">{cardData.likes.length}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
     </main>
   );
 }
