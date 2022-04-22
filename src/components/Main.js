@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import api from "../utils/api";
 import avatarPic from "../images/jacq-cousteau-avatar-pic.png";
 
 function Main(props) {
+  const [userName, setUserName] = React.useState("");
+  const [userDescription, setUserDescription] = React.useState("");
+  const [userAvatar, setUserAvatar] = React.useState("");
+
+  useEffect(() => {
+    api.getUserData().then((userData) => {
+      setUserName(userData.name);
+      setUserDescription(userData.about);
+      setUserAvatar(userData.avatar);
+    });
+  }, []);
+
   return (
     <main className="main">
       <section className="profile">
@@ -9,18 +22,18 @@ function Main(props) {
           className="profile__avatar-overlay"
           onClick={props.onEditAvatarClick}
         >
-          <img className="avatar" src={avatarPic} alt="Avatar" />
+          <img className="avatar" src={userAvatar} alt="Avatar" />
         </div>
 
         <div className="profile-info">
-          <h1 className="profile-info__name"> </h1>
+          <h1 className="profile-info__name">{userName} </h1>
           <button
             className="profile-info__button-edit"
             type="button"
             aria-label="edit"
             onClick={props.onEditProfileClick}
           ></button>
-          <p className="profile-info__job"></p>
+          <p className="profile-info__job">{userDescription}</p>
         </div>
         <button
           className="profile__button-add"

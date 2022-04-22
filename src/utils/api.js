@@ -99,4 +99,6 @@ const api = new Api({
   token: apiSettings.token,
 });
 
+api.setup();
+
 export default api;
