@@ -27,8 +27,6 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleCardClick() {}
-
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -56,18 +54,79 @@ function App() {
         title={"Edit Profile"}
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
+        uniqueContent={
+          <>
+            <input
+              type="text"
+              className="form__input form__input_type_name popup__input"
+              name="name"
+              id="name-input"
+              minLength="2"
+              maxLength="40"
+              required
+            />
+            <span className="popup__error" id="name-input-error"></span>
+            <input
+              type="text"
+              className="form__input form__input_type_job popup__input"
+              name="job"
+              id="job-input"
+              minLength="2"
+              maxLength="200"
+              required
+            />
+            <span className="popup__error" id="job-input-error"></span>
+          </>
+        }
       />
       <PopupWithForm
         name={"edit-avatar"}
         title={"Change profile picture"}
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
+        uniqueContent={
+          <>
+            <input
+              type="url"
+              className="form__input form__input_type_link popup__input"
+              placeholder="Image link"
+              name="link"
+              id="avatar-link-input"
+              required
+            />
+            <span className="popup__error" id="avatar-link-input-error"></span>
+          </>
+        }
       />
       <PopupWithForm
         name={"add-card"}
         title={"New place"}
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
+        uniqueContent={
+          <>
+            <input
+              type="text"
+              className="form__input form__input_type_title popup__input"
+              placeholder="Title"
+              name="title"
+              id="title-input"
+              minLength="1"
+              maxLength="30"
+              required
+            />
+            <span className="popup__error" id="title-input-error"></span>
+            <input
+              type="url"
+              className="form__input form__input_type_link popup__input"
+              placeholder="Image link"
+              name="link"
+              id="image-link-input"
+              required
+            />
+            <span className="popup__error" id="image-link-input-error"></span>
+          </>
+        }
       />
       {/* <PopupWithForm name={"confirmation"} title={"Are you sure?"} /> */}
       <ImagePopup
