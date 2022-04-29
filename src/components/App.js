@@ -64,6 +64,21 @@ function App() {
       });
   }
 
+  function handleCardDelete(card) {
+    api
+      .removeCard(card._id)
+      .then(() =>
+        setCards(() =>
+          cards.filter((currentCard) =>
+            currentCard._id !== card._id ? currentCard : null
+          )
+        )
+      )
+      .catch((err) => {
+        console.log(`${err}`);
+      });
+  }
+
   useEffect(() => {
     api
       .getInitialData()
@@ -86,6 +101,7 @@ function App() {
           onAddPlaceClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
           onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
           cards={cards}
         />
 
