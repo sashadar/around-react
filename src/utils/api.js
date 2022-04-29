@@ -56,6 +56,10 @@ class Api {
     }).then(processResponse);
   }
 
+  changeLikeCardStatus(cardId, isNotLiked) {
+    return isNotLiked ? this.addLike(cardId) : this.removeLike(cardId);
+  }
+
   setUserData({ name, about }) {
     return fetch(`${this._mainUrl}/users/me`, {
       method: "PATCH",
