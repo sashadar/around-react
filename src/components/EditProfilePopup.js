@@ -11,8 +11,8 @@ function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    setName(`${currentUser.name}""`); //during the first rendering name value is undefined -it causes errors in input fields
-    setDescription(`${currentUser.about}""`);
+    setName(currentUser.name + ""); //during the first rendering name value is undefined -it causes errors in input fields
+    setDescription(currentUser.about + "");
   }, [currentUser]);
 
   function handleNameChange(e) {

@@ -4,8 +4,9 @@ import api from "../utils/api";
 import Main from "./Main.js";
 import PopupWithForm from "./PopupWithForm";
 import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup.js";
+import EditAvatarPopup from "./EditAvatarPopup";
 import ImagePopup from "./ImagePopup";
+import AddPlacePopup from "./AddPlacePopup";
 import Footer from "./Footer.js";
 
 import CurrentUserContext from "../contexts/CurrentUserContext";
@@ -49,7 +50,6 @@ function App() {
   }
 
   function handleCardLike(card) {
-    // Check one more time if this card was already liked
     const isLiked = card.likes.some((user) => user._id === currentUser._id);
 
     api
@@ -105,6 +105,18 @@ function App() {
       });
   }
 
+  function handleAddPlaceSubmit({ name, link }) {
+    api
+      .addNewCard({ name, link })
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Error:     ${err}`);
+      });
+  }
+
   useEffect(() => {
     api
       .getInitialData()
@@ -141,34 +153,12 @@ function App() {
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         ></EditAvatarPopup>
-        <PopupWithForm
-          name={"add-card"}
-          title={"New place"}
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-        >
-          <input
-            type="text"
-            className="form__input form__input_type_title popup__input"
-            placeholder="Title"
-            name="title"
-            id="title-input"
-            minLength="1"
-            maxLength="30"
-            required
-          />
-          <span className="popup__error" id="title-input-error"></span>
-          <input
-            type="url"
-            className="form__input form__input_type_link popup__input"
-            placeholder="Image link"
-            name="link"
-            id="image-link-input"
-            required
-          />
-          <span className="popup__error" id="image-link-input-error"></span>
-        </PopupWithForm>
-        {/* <PopupWithForm name={"confirmation"} title={"Are you sure?"} /> */}
+          onAddPlaceSubmit={handleAddPlaceSubmit}
+        ></AddPlacePopup>
+        <PopupWithForm name={"confirmation"} title={"Are you sure?"} />
         <ImagePopup
           isOpen={isImagePopupOpen}
           onClose={closeAllPopups}
