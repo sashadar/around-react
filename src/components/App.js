@@ -4,6 +4,7 @@ import api from "../utils/api";
 import Main from "./Main.js";
 import PopupWithForm from "./PopupWithForm";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup.js";
 import ImagePopup from "./ImagePopup";
 import Footer from "./Footer.js";
 
@@ -92,6 +93,18 @@ function App() {
       });
   }
 
+  function handleUpdateAvatar({ avatarLink }) {
+    api
+      .setUserAvatar(avatarLink)
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Error:     ${err}`);
+      });
+  }
+
   useEffect(() => {
     api
       .getInitialData()
@@ -123,22 +136,11 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
-        <PopupWithForm
-          name={"edit-avatar"}
-          title={"Change profile picture"}
+        <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-        >
-          <input
-            type="url"
-            className="form__input form__input_type_link popup__input"
-            placeholder="Image link"
-            name="link"
-            id="avatar-link-input"
-            required
-          />
-          <span className="popup__error" id="avatar-link-input-error"></span>
-        </PopupWithForm>
+          onUpdateAvatar={handleUpdateAvatar}
+        ></EditAvatarPopup>
         <PopupWithForm
           name={"add-card"}
           title={"New place"}
