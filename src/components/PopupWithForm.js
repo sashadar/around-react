@@ -1,17 +1,6 @@
 import React from "react";
 
 function PopupWithForm(props) {
-  //props.name: "edit-profile"
-  //props.title: "Edit profile"
-  //
-  //props.name: "edit-avatar"
-  //props.title: "Change profile picture"
-  //
-  //props.name: "add-card"
-  //props.title: "New place"
-  //
-  //props.name: "confirmation"
-  //props.title: "Are you sure?"
   return (
     <section
       className={`popup popup_content_${props.name} ${

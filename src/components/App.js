@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Header from "./Header.js";
 import api from "../utils/api";
 import Main from "./Main.js";
-import PopupWithForm from "./PopupWithForm";
+/* import PopupWithForm from "./PopupWithForm"; */
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import ImagePopup from "./ImagePopup";
@@ -142,7 +142,6 @@ function App() {
           onCardDelete={handleCardDelete}
           cards={cards}
         />
-
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
@@ -158,7 +157,7 @@ function App() {
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         ></AddPlacePopup>
-        <PopupWithForm name={"confirmation"} title={"Are you sure?"} />
+        {/* <PopupWithForm name={"confirmation"} title={"Are you sure?"} /> */}
         <ImagePopup
           isOpen={isImagePopupOpen}
           onClose={closeAllPopups}
