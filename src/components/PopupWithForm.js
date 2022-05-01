@@ -29,7 +29,7 @@ function PopupWithForm(props) {
             className="form__button-submit popup__button"
             aria-label="save"
           >
-            Save
+            {props.buttonText}
           </button>
         </form>
       </div>
