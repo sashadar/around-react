@@ -35,31 +35,6 @@ function Main(props) {
           onClick={props.onAddPlaceClick}
         ></button>
       </section>
-      {/* 
-      <section className="popup popup_content_confirmation">
-        <div className="popup__container popup__container_content_confirmation popup__container_content_form">
-          <button
-            type="button"
-            className="popup__button-close popup__button-close_content_form"
-            aria-label="close"
-          ></button>
-
-          <form
-            className="form popup__form"
-            name="form-confirmation"
-            novalidate
-          >
-            <h2 className="form__heading">Are you sure?</h2>
-            <button
-              type="submit"
-              className="form__button-submit popup__button"
-              aria-label="save"
-            >
-              Yes
-            </button>
-          </form>
-        </div>
-      </section> */}
       <section className="elements">
         {props.cards.map((cardData) => (
           <Card
