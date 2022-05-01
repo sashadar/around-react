@@ -23,6 +23,11 @@ function AddPlacePopup(props) {
     setImageLink(e.target.value);
   }
 
+  React.useEffect(() => {
+    setImageTitle("");
+    setImageLink("");
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm
       name={"add-card"}
